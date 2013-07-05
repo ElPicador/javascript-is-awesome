@@ -68,13 +68,6 @@ describe('dojo 1', function() {
 			//ecrivez un test sur la valeur de ninja et myNinja
 		});
 
-		it("arguments un object caché", function() {
-			function maFonction(n) {
-				return arguments;
-			}
-			console.log(maFonction(1));
-			
-		});
 	});
 
 	describe("Les objets c'est cool aussi", function() {
@@ -85,17 +78,28 @@ describe('dojo 1', function() {
 
 			//Faites passer les tests
 			var ninjaA = Ninja();
-			expect(ninja).toBe( ?? );
+			expect(ninja).toBe( /**/ );
 
 			var ninjaB = new Ninja();
-			expect(ninja.name).toBe( ?? );
+			expect(ninja.name).toBe( /**/ );
 		});
 
-		it("", function() {
+		it("sans new", function() {
+			function User(first, last){ 
+				this.name = first + " " + last; 
+			} 
+			
+			window.name = "Resig"; 
+			var user = User("John", name); 
+			expect(typeof user).toBe( /**/ );
+			expect(name).toBe( /**/ );
+		});
+
+		it("comme une fonction", function() {
 			function Ninja(){ 
 				//N'oubliez pas la propriété swung
 
- 				this.swingSword = function(){ 
+				this.swingSword = function(){ 
 					//Faites passer les tests
 				}; 
 			} 
@@ -106,6 +110,107 @@ describe('dojo 1', function() {
 			 
 			var ninjaB = new Ninja(); 
 			expect(ninjaB.swung).toBeFalsy();
+		});
+	});
+
+	describe("les closures", function() {
+		it("toutes simples", function() {
+			var num = 10; 
+ 
+			function addNum(myNum){ 
+				return num + myNum; 
+			} 
+			 
+			expect(addNum(5)).toBe( /**/ );
+		})
+
+		it("toutes simples ou pas", function() {
+			var num = 10; 
+ 
+			function addNum(myNum){ 
+				return num + myNum; 
+			} 
+			
+			num = 15;
+
+			expect(addNum(5)).toBe( /**/ );
+		});
+
+		it("les scopes avec des closures", function() {
+			(function(){ 
+				var count = 0; 
+			 
+				var timer = setInterval(function(){ 
+					if ( count < 5 ) { 
+						count++; 
+					} else { 
+						expect(count).toBe( /**/ );
+						expect(typeof timer).toBe( /**/ );
+						clearInterval( timer ); 
+					} 
+				}, 100); 
+			})(); 
+
+			expect(typeof count).toBe( /**/ );
+			expect(typeof timer).toBe( /**/ );
+		});
+	});
+
+	describe("les prototypes", function() {
+		it("la base", function() {
+			function Ninja(){}
+
+			var ninjaA = Ninja();
+			expect(ninjaA.swingSword()).toBe( /**/ );
+
+			var ninjaB = new Ninja()
+			expect(ninjaB.swingSword()).toBeTruthy();
+		});
+
+		it("les constructeurs", function() {
+			function Ninja(){} 
+			 
+			var ninja = new Ninja(); 
+			
+			expect(typeof ninja).toBe( /**/ );
+			expect(ninja instanceof Ninja).toBe( /**/ );
+			expect(ninja.constructor).toBe( /**/ );
+		});
+
+		it("les constructeurs 2", function() {
+			function Ninja(){}
+			var ninja = new Ninja();
+			var ninjaB = new ninja.constructor();
+
+			expect(typeof ninja).toBe( /**/ );
+			expect(typeof ninjaB).toBe( /**/ );
+		});
+
+		it("héritage", function() {
+			function Person(){}
+			Person.prototype.dance = function(){};
+
+			function Ninja(){}
+
+			Ninja.prototype = new Person();
+
+			var ninja = new Ninja();
+			expect(ninja instanceof Ninja).toBe( /**/ );
+			expect(ninja instanceof Person).toBe( /**/ );
+			expect(ninja instanceof Object).toBe( /**/ );
+		});
+
+		it("héritage 2", function() {
+			function Person(){}
+			Person.prototype.getName = function(){
+			  return this.name;
+			};
+
+			// Coder une fonction qui hérite de Person
+			// et déclarer son name dans le constructeur
+
+			var me = new Me();
+			expect(me.getName()).toBe("A name was set.");
 		});
 	});
 
@@ -134,13 +239,13 @@ describe('dojo 1', function() {
 			}
 
 			//Faites passer les tests
-			expect(fn()).toBe( ?? );
+			expect(fn()).toBe( /**/ );
 
 			//Changez le contexte d'appel de fn par object
-			expect( ?? ).toBe( object );
+			expect( /**/ ).toBe( object );
 		})
 
-		it("", function() {
+		it("looooooop", function() {
 			function loop(array, fn){ 
 				for ( var i = 0; i < array.length; i++ ) { 
 					// Implementez la méthode pour faire passer les tests
@@ -155,6 +260,66 @@ describe('dojo 1', function() {
 				num++;
 			});
 		});
+
+		it("je change de nom", function() {
+			function Ninja(name){ 
+				// Implement meeee! 
+			} 
+			 
+			var ninja = new Ninja("John"); 
+			expect(ninja.name).toBe("John");
+			 
+			ninja.changeName("Bob"); 
+			expect(ninja.name).toBe("Bob");
+		});
+
+		it("avec ou sans new", function() {
+			function User(first, last){ 
+				//Coder ici
+				 
+				this.name = first + " " + last; 
+			} 
+			 
+			var name = "Resig"; 
+			var user = User("John", name); 
+			 
+			expect(typeof user).toBe(User);
+			expect(name).toBe("Resig");
+		});
+
+		it("min ou max sur un tableau", function() {
+			function smallest(array) { 
+				//Code ici, ça doit faire une seule ligne et utiliser Math.min
+			} 
+
+			expect(Math.min(0, 1, 2, 3)).toBe(0);
+			expect(Math.min([0, 1, 2, 3])).toBe(NaN);
+			expect(smallest([0, 1, 2, 3])).toBe(0);
+		});
+
+		it("sur les closures", function() {
+			var a = 5; 
+			function runMe(a) {
+				expect(a).toBe( /**/ ); 
+			 
+				function innerRun(){ 
+					expect(b).toBe( /**/ );
+					expect(c).toBe( /**/ );
+				} 
+
+				var b = 7; 
+				innerRun(); 
+				var c = 8; 
+			} 
+			runMe(6); 
+			 
+			for ( var d = 0; d < 3; d++ ) { 
+				setTimeout(function(){ 
+					expect(d).toBe( /**/ );
+				}, 100); 
+			}
+		});
 	});
+
 
 });
