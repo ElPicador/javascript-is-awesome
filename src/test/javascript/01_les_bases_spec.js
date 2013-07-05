@@ -52,6 +52,15 @@ describe("les bases", function() {
 		expect(fonction3 instanceof Function).toBeTruthy();
 	});
 
+	it("Javascript est fonctionnel", function() {
+		function maFonction() { 
+			//Completer le code ici
+		}
+
+		expect(typeof maFonction()).toBe("function");
+		expect(maFonction()()).toBeTruthy();
+	});
+
 	it('les namespaces', function() {
 		var a = 1;
 		b = 1;
