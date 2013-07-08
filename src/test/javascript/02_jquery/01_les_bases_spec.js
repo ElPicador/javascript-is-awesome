@@ -75,6 +75,17 @@ describe("DOM", function() {
 		expect(selecteur).toHaveClass("klass");
 		expect(selecteur).toHaveClass("klass2");
 	});
+
+	it("les éléments qui n'existent pas", function() {
+		//En jQuery on peut écrire des sélecteurs qui ne pointent sur rien
+		var selecteur = $('nimp');
+		//Ça ne déclenche pas d'erreur, et on peut même appeler des méthodes dessus
+		selecteur.find('.ma-classe');
+		//Et ça ne déclenche toujours pas d'erreur
+
+		//Il est donc conseillé de regarder la taille de la selection avant de la traiter
+		expect(selecteur.length).toBe(0);
+	});
 });
 
 describe("Changement de DOM", function() {

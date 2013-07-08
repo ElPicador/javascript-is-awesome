@@ -33,22 +33,6 @@ describe("Les interactions (aka les handlers)", function() {
 		expect($('#mon-id span')).toHaveClass('ma-classe');
 	});
 
-	xit("event.target", function() {
-
-	});
-
-	xit("event.preventDefault()", function() {
-// 		$(document).ready(function() {
-//   $(".see-photos").on("click", function(event) {
-//     event.stopPropagation();
-//     $(this).closest(".tour").find(".photos").slideToggle();
-//   });
-//   $(".tour").on("click", function() {
-//     alert("This should not be called");
-//   });
-// });
-	});
-
 	it("utilisation du this", function() {
 		//Dans le test précédent, vous avez normalement utilisé un selecteur pour retrouver votre élément
 		//Avec jQuery vous pouvez vous simplifier la vie
@@ -57,6 +41,24 @@ describe("Les interactions (aka les handlers)", function() {
 		$('#mon-id span').on('click', function() {
 			//Votre code ici
 			//Hint : _this_ ne contient pas tout à fait ce dont vous avez besoin
+		});
+
+		//On simule un click sur cet élement jQuery
+		$('.ma-classe').click();
+		expect($('#mon-id span')).toHaveLength(1);
+		expect($('#mon-id span')).toHaveClass('mon-autre-classe');
+
+		$('.mon-autre-classe').click();
+		expect($('#mon-id span')).toHaveLength(0);
+	});
+
+	it("L'objet event", function() {
+		//Un callback jQuery peut prendre en paramètre un objet de type event
+		//qui représente l'évènement qui a été déclenché
+
+		$('#mon-id span').on('click', function(event) {
+			//Votre code ici, utiliser l'objet event (pas de this)
+			//Hint : http://api.jquery.com/category/events/event-object/ et http://api.jquery.com/event.target/
 		});
 
 		//On simule un click sur cet élement jQuery
