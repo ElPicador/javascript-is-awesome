@@ -108,6 +108,55 @@ describe("les bases", function() {
 		expect(fonction.maPropriete).toBe(objet.maPropriete);
 	});
 
-	xit("== vs ===", function() {});
+	it("== vs ===", function() {
+		//Pour l'égalité on a deux opérateurs == et ===
+		//Voyons les différences
+		expect('' == '0').toBe( /**/ );
+		expect('' === '0').toBe( /**/ );
+
+		expect(0 == '').toBe( /**/ );
+		expect(0 === '').toBe( /**/ );
+		
+		expect(0 == '0').toBe( /**/ );
+		expect(0 === '0').toBe( /**/ );
+
+		expect(false == 'false').toBe( /**/ );
+		expect(false === 'false').toBe( /**/ );
+
+		expect(false == '0').toBe( /**/ );
+		expect(false === '0').toBe( /**/ );
+
+		expect(false == undefined).toBe( /**/ );
+		expect(false === undefined).toBe( /**/ );
+		
+		expect(false == null).toBe( /**/ );
+		expect(false === null).toBe( /**/ );
+
+		expect(null == undefined).toBe( /**/ );
+		expect(null === undefined).toBe( /**/ );
+
+		expect(' \t\r\n ' == 0).toBe( /**/ );
+		expect(' \t\r\n ' === 0).toBe( /**/ );
+
+		var a = [1,2,3]
+		var b = [1,2,3]
+		expect(a == b).toBe( /**/ );
+		expect(a === b).toBe( /**/ );
+
+		var c = { x: 1, y: 2 };
+		var d = { x: 1, y: 2 };
+		expect(c == d).toBe( /**/ );
+		expect(c === d).toBe( /**/ );
+		
+		var e = "text";
+		var f = "te" + "xt";
+		expect(e == f).toBe( /**/ );
+		expect(e === f).toBe( /**/ );
+
+		expect("abc" == new String("abc")).toBe( /**/ );
+		expect("abc" === new String("abc")).toBe( /**/ );
+
+		//Conclusion me JAMAIS utiliser ==
+	});
 });
 

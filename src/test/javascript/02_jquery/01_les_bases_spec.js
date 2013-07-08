@@ -71,7 +71,7 @@ describe("DOM", function() {
 
 		//Les selecteurs jQuery peuvent être combinés
 		//Écrivez un sélecteur qui ne renvoi que le div avec la class klass2
-		var selecteur = $( /**/) ;
+		var selecteur = $( /**/ );
 		expect(selecteur).toHaveClass("klass");
 		expect(selecteur).toHaveClass("klass2");
 	});
