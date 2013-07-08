@@ -1,3 +1,10 @@
+describe("À lire avant", function() {
+	it("Aller dans le fichier src/test/langage/01_les_bases_spec.js", function() {
+		//Vous pouver supprimer ce test
+		expect(false).toBeTruthy();
+	});
+});
+
 describe("Ceci est un bloc de plusieurs tests", function() {
 	//On déclare nos tests dans une fonction
 	
