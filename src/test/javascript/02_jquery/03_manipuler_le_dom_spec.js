@@ -40,8 +40,20 @@ describe("Manipuler le DOM", function() {
 		expect($('#mon-id span')).toHaveClass('ma-classe');
 	});
 
-	xit(".toggleClass()", function() {
+	it("Changer de classe CSS : toggleClass()", function() {
+		setFixtures('<span id="mon-id" class="ma-classe"></span>');
 
+		function toggleClass() {
+			//Votre code ici
+		}
+
+		expect($('#mon-id')).toHaveAttr('class', 'ma-classe');
+
+		toggleClass();
+		expect($('#mon-id')).toHaveAttr('class', '');
+
+		toggleClass();
+		expect($('#mon-id')).toHaveAttr('class', 'ma-classe');
 	})
 
 	it("d'autres fonctions", function() {
