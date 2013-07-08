@@ -2,7 +2,7 @@ To start learning :
 * Have java and maven installed
 * mvn jasmine:bdd
 * go to http://localhost:8234
-* Start reading file src/test/javascript/01_les_bases_spec.js
+* Start reading file src/test/langage/01_les_bases_spec.js
 
 
 Sources : http://ejohn.org/apps/learn/
