@@ -26,12 +26,38 @@ describe("Avant de commencer", function() {
 
 //C'est ici que ça commence vraiment
 describe("$ vs $()", function() {
-	//http://learn.jquery.com/using-jquery-core/dollar-object-vs-function/
-	//http://learn.jquery.com/using-jquery-core/document-ready/
-	//http://learn.jquery.com/using-jquery-core/utility-methods/
-	//http://learn.jquery.com/using-jquery-core/iterating/
-})
 
+	it("les principales différences", function() {
+		//$ est une fonction (et donc un objet)
+		//$() est l'appel à la méthode $
+
+		expect(typeof $).toBe( /**/ );
+		expect(typeof $()).toBe( /**/ );
+	});
+
+	it("$ est plus qu'une fonction", function() {
+		//$ (ou jQuery) est un objet qui comporte plusieurs méthodes utilitaires
+		var a = " les     espaces c'est super bien            ";
+		expect($.trim(a)).toBe( /**/ );
+
+		//$.each() permet d'itérer sur une collection
+		$.each([0, 1, 2], function(i, value) {
+			expect(i).toBe(value);
+		});
+
+		//Ça fonctionne aussi sur les objets
+		$.each({foo: "foo", bar:"bar"}, function(key, value) {
+			expect(key).toBe(value);
+		});		
+
+		//Pour plus de détails : http://api.jquery.com/category/utilities/
+	});
+
+	it("document.ready", function() {
+		//Pas de tests ici, il suffit de regarder et d'afficher les pages dans le répertoire :
+		// src/main/test/html dans l'ordre
+	});	
+})
 
 describe("DOM", function() {
 	//jQuery permet entre autre de trouver des tags HTML dans une page web

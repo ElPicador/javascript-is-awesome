@@ -1,0 +1,16 @@
+<html>
+<head>
+	<title>03 après code html</title>
+	<meta http-equiv='Content-Type' content='text/html; charset=utf-8'>	
+	<script type="text/javascript" src="../../main/javascript/jquery-2.0.3.min.js"></script>
+</head>
+<body>
+	<h1>Ça fonctionne (enfin) ! $('span') nous renvoi enfin sa valeur.<br/>
+		Normal, l'exécution du code est après le chargement de la balise span
+	</h1>
+	<span style="display: none;">test</span>
+	<script type="text/javascript">
+		alert($('span').text());
+	</script>
+</body>
+</html>

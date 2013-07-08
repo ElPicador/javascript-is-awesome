@@ -1,0 +1,16 @@
+<html>
+<head>
+	<title>02 après inclusion jquery</title>
+	<meta http-equiv='Content-Type' content='text/html; charset=utf-8'>	
+	<script type="text/javascript" src="../../main/javascript/jquery-2.0.3.min.js"></script>
+	<script type="text/javascript">
+		alert($('span').text());
+	</script>
+</head>
+<body>
+	<h1>C'est (encore) tout cassé, $('span') ne nous renvoi rien.<br/>
+		Normal, la balise span n'est pas encore chargée au moment de l'exécution du code :<pre>alert($('span').text());</pre>
+	</h1>
+	<span style="display: none;">test</span>
+</body>
+</html>
