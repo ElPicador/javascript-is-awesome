@@ -54,16 +54,22 @@ describe("Manipuler le DOM", function() {
 
 		toggleClass();
 		expect($('#mon-id')).toHaveAttr('class', 'ma-classe');
-	})
+	});
+
+	it("Les attributs data- (html5 inside)", function() {
+		//La norme html5 permet d'avoir des attributs data-qqchose sur un élément
+		//jQuery permet d'y accéder/modifier simplement avec la méthode data()
+
+		setFixtures('<div id="mon-id" data-toto="tata"></div>');
+
+		//Faites passer les tests
+		expect($('#mon-id')).toHaveAttr('data-mondata', 1);
+		expect(/**/).toBe('tata');
+	});
 
 	it("d'autres fonctions", function() {
 		//Il existe de nombreux autres méthode pour manipuler le DOM
 		//Une liste complète est disponible ici : http://api.jquery.com/category/manipulation/
 	});
 });
-
-describe("Pour aller plus loin", function() {
-	//http://learn.jquery.com/using-jquery-core/data-methods/
-	//http://learn.jquery.com/performance/detach-elements-before-work-with-them/
-})
 
