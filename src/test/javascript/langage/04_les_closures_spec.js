@@ -40,5 +40,15 @@ describe("les closures", function() {
 		expect(typeof count).toBe( /**/ );
 		expect(typeof timer).toBe( /**/ );
 	});
+
+	it("Double closure", function() {
+		function A(value) {
+			return function B() {
+				return value;
+			}
+		}
+
+		expect(A()()).toBe( /**/ );
+	});
 });
 

@@ -3,12 +3,12 @@ describe("les prototypes", function() {
 	// Javascript est un langage de programmation orientée prototype.
 	// C'est une forme de programmation orientée objet sans classe, basée sur la notion de prototype. 
 	// Un prototype est un objet à partir duquel on crée de nouveaux objets. 
-	// Tout objet Javascript comporte une propriété nommée _prototype_ (sans les _)
+	// Toute fonction Javascript comporte une propriété nommée _prototype_ (sans les _)
 
 	// N'hésiter pas à lire la page wikipedia sur le sujet : http://fr.wikipedia.org/wiki/Programmation_orient%C3%A9e_prototype
 
 	it("la base", function() {
-		function Ninja(){}
+		function Ninja() {}
 
 		//Completer le code ici pour faire passer les tests
 
