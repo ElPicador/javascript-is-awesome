@@ -1,4 +1,3 @@
-//http://learn.jquery.com/ajax/
 
 describe("Avant de commencer avec AJAX", function() {
 	it("jasmine et les espions", function() {
@@ -50,10 +49,10 @@ describe("Avant de commencer avec AJAX", function() {
 
 		it("avec un vrai appel", function() {
 			//On peut aussi simplement espionner notre fonction
-  		spyOn(objet, 'fonction').andCallThrough()
+			spyOn(objet, 'fonction').andCallThrough()
 			objet.fonction(1);
 			expect(objet.fonction).toHaveBeenCalledWith(1);
-			expect(valeurExterne).toBe(1);		
+			expect(valeurExterne).toBe(1);
 		});
 	});
 
@@ -62,7 +61,7 @@ describe("Avant de commencer avec AJAX", function() {
 			//Compléter ici
 			var espion = undefined;
 
-			expect(espion).toHaveBeenCalledWith(jasmine.any(String), 1);			
+			expect(espion).toHaveBeenCalledWith(jasmine.any(String), 1);
 		});
 
 		it('call through', function() {
@@ -70,7 +69,7 @@ describe("Avant de commencer avec AJAX", function() {
 				maFonction: function(arg1, arg2) {
 					return arg1 + arg2;
 				}
-			}			
+			}
 
 			var result = objet.maFonction(1, '2');
 			expect(objet.maFonction).toHaveBeenCalledWith( /**/ );
@@ -78,14 +77,14 @@ describe("Avant de commencer avec AJAX", function() {
 		});
 
 	});
-	
+
 });
 
 describe("ajax ? le pote d'Achille ?", function() {
 
 	//On initialise jasmine-ajax pour mocker nos appels AJAX
 	var callbacks, request, responseObject;
-  var success, error, complete;
+	var success, error, complete;
 
 	beforeEach(function() {
 		//On dit à jasmine de mocker toutes les requêtes AJAX
@@ -103,48 +102,44 @@ describe("ajax ? le pote d'Achille ?", function() {
 		//On utilise donc des callbacks pour traiter le retour (succes ou erreur)
 
 		$.ajax({
-			url: "/nimp", //l'url de mon appel			
+			url: "/nimp", //l'url de mon appel
 
 			//Les données envoyées
 			data: {
 				search: 'yop'
 			},
-	 			
+
 			type: "GET", //Le type de la requête (généralement GET ou POST)
-	 
+
 			dataType : "json", //Le type de retour auquel on s'attend
-	 
+
 			success: function(result) {
 				//Le code exécuté en cas de succès de la requête
 			},
-	 
+
 			error: function( xhr, status ) {
 				//Le code exécuté en cas d'erreur de la requête
 			},
-	 
+
 			complete: function( xhr, status ) {
 				//Le code exécuté quelque soit le résultat de la requête
 				//C'est utile pour arrêter un spinner par exemple.
 			}
-		});  
-	});
-
-	describe("de vraies requête ajax", function() {
-		it("une simple", function() {
-			//Coder un $.ajax qui répond au test
-			$.ajax( /**/ );
-
-			request = mostRecentAjaxRequest();			
-    	request.response({status: 200, responseText: "{}"});
-
-			expect(request.url).toBe('/nimp');
-			expect(request.method).toBe('POST');
-			expect(success).toHaveBeenCalled();
-			expect(complete).toHaveBeenCalled();
-			expect(error).not.toHaveBeenCalled();
 		});
 	});
 
-	
+	it("une vraie requête ajax", function() {
+		//Coder un $.ajax qui répond au test
+		$.ajax( /**/ );
+
+		request = mostRecentAjaxRequest();
+		request.response({status: 200, responseText: "{}"});
+
+		expect(request.url).toBe('/nimp');
+		expect(request.method).toBe('POST');
+		expect(success).toHaveBeenCalled();
+		expect(complete).toHaveBeenCalled();
+		expect(error).not.toHaveBeenCalled();
+	});
 });
 
