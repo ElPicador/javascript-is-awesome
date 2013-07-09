@@ -5,9 +5,10 @@ describe("À lire avant", function() {
 	});
 });
 
+//Pour tester nous utiliserons Jasmine : http://pivotal.github.io/jasmine/
 describe("Ceci est un bloc de plusieurs tests", function() {
 	//On déclare nos tests dans une fonction
-	
+
 	it("Ceci est un test, l'équivalent en jUnit serait une méthode avec un @test", function() {
 		//Pareil, le corps de notre test est dans une fonction
 
@@ -31,7 +32,7 @@ describe("Ceci est un bloc de plusieurs tests", function() {
 	});
 
 	it("typeof", function() {
-		//typeof permet de connaitre de le type  d'un objet. 
+		//typeof permet de connaitre de le type  d'un objet.
 		var a = "aaa";
 		expect(typeof a).toBe('string');
 	});
@@ -52,7 +53,7 @@ describe("les bases", function() {
 		//Ecrire de 3 façons une fonction :
 		//Une "classique"
 		//Une nommée
-		//Une en propriété 
+		//Une en propriété
 
 		expect(fonction1 instanceof Function).toBeTruthy();
 		expect(fonction2 instanceof Function).toBeTruthy();
@@ -60,7 +61,7 @@ describe("les bases", function() {
 	});
 
 	it("Javascript est fonctionnel", function() {
-		function maFonction() { 
+		function maFonction() {
 			//Completer le code ici
 		}
 
@@ -116,7 +117,7 @@ describe("les bases", function() {
 
 		expect(0 == '').toBe( /**/ );
 		expect(0 === '').toBe( /**/ );
-		
+
 		expect(0 == '0').toBe( /**/ );
 		expect(0 === '0').toBe( /**/ );
 
@@ -128,7 +129,7 @@ describe("les bases", function() {
 
 		expect(false == undefined).toBe( /**/ );
 		expect(false === undefined).toBe( /**/ );
-		
+
 		expect(false == null).toBe( /**/ );
 		expect(false === null).toBe( /**/ );
 
@@ -147,7 +148,7 @@ describe("les bases", function() {
 		var d = { x: 1, y: 2 };
 		expect(c == d).toBe( /**/ );
 		expect(c === d).toBe( /**/ );
-		
+
 		var e = "text";
 		var f = "te" + "xt";
 		expect(e == f).toBe( /**/ );

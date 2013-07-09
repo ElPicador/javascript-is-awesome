@@ -14,13 +14,15 @@ describe("Vérifions que tout est fonctionnel", function() {
 describe("Avant de commencer", function() {
 	it("jasmine-jquery", function() {
 		//jasmine-jquery va nous permettre de tester simplement du code écrit en jQuery
-		//La méthode setFixtures(html) permet de créer un bout 
+		//La méthode setFixtures(html) permet de créer un bout
 		//d'html qui ne sera vivant que le temps de notre test
 		setFixtures('<div id="mon-id"></div>');
 
 		//On peut donc maintenant faire des tests sur ce bout d'html
 		//toExist() nous permet de savoir si l'élément existe (mais vous l'aviez deviné)
 		expect($('#mon-id')).toExist();
+
+		//Source : https://github.com/velesin/jasmine-jquery
 	});
 });
 
@@ -48,7 +50,7 @@ describe("$ vs $()", function() {
 		//Ça fonctionne aussi sur les objets
 		$.each({foo: "foo", bar:"bar"}, function(key, value) {
 			expect(key).toBe(value);
-		});		
+		});
 
 		//Pour plus de détails : http://api.jquery.com/category/utilities/
 	});
@@ -56,7 +58,7 @@ describe("$ vs $()", function() {
 	it("document.ready", function() {
 		//Pas de tests ici, il suffit de regarder et d'afficher les pages dans le répertoire :
 		// src/main/test/html dans l'ordre
-	});	
+	});
 })
 
 describe("DOM", function() {
@@ -64,21 +66,21 @@ describe("DOM", function() {
 	//Pour ça on utilise l'objet jQuery (ou $ plus simplement), comme une fonction
 	//jQuery gère les sélecteurs CSS
 
-	it("trouver un élément par son id", function() {		
+	it("trouver un élément par son id", function() {
 		setFixtures('<div id="div-id"></div>');
 
 		//Le selecteur pour un id est # suivi de son id : #mon-id
 		expect( /**/ ).toExist();
 	});
 
-	it("trouver un élément par son nom", function() {		
+	it("trouver un élément par son nom", function() {
 		setFixtures('<h1>Mon gros texte</h1>');
 
 		//Le selecteur pour un élément est son nom : div
 		expect( /**/ ).toExist();
 	});
 
-	it("trouver un élément par sa classe", function() {		
+	it("trouver un élément par sa classe", function() {
 		setFixtures('<span class="mon-span">Ceci est un span</span>');
 
 		//Le selecteur pour une classe est . suivi de sa classe : .ma-classe
