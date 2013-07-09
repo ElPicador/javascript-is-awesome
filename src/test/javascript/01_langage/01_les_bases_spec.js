@@ -104,7 +104,7 @@ describe("les bases", function() {
 		expect(fonction instanceof Function).toBeTruthy();
 
 		expect(objet instanceof Object).toBeTruthy();
-		expect(objet instanceof Object).toBeFalsy();
+		expect(objet instanceof Function).toBeFalsy();
 
 		expect(fonction.maPropriete).toBe(objet.maPropriete);
 	});
