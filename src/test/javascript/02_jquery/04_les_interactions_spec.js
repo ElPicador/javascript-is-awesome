@@ -13,7 +13,7 @@ describe("Les interactions (aka les handlers)", function() {
 		//Ici on écoute le click de souris
 		//Faites passer les tests
 		var monCallback = function() {
-			//Coder ici
+			$('.mon-autre-classe').remove();
 		}
 		$('#mon-id').on('click', monCallback);
 
@@ -24,7 +24,9 @@ describe("Les interactions (aka les handlers)", function() {
 	});
 
 	it("votre premier onClick", function() {
-		//Faites passer les tests !
+		$('.ma-classe').on('click', function() {
+			$('.mon-autre-classe').remove();
+		});
 
 		expect($('.ma-classe')).toHandle('click');
 		//On simule un click sur cet élement jQuery
@@ -39,8 +41,7 @@ describe("Les interactions (aka les handlers)", function() {
 		//Dans un callback l'objet _this_ permet d'accéder à l'élément sur lequel l'évènement est lancé
 		//Faites passez les tests en utilisant _this_
 		$('#mon-id span').on('click', function() {
-			//Votre code ici
-			//Hint : _this_ ne contient pas tout à fait ce dont vous avez besoin
+			$(this).remove();
 		});
 
 		//On simule un click sur cet élement jQuery
@@ -57,6 +58,7 @@ describe("Les interactions (aka les handlers)", function() {
 		//qui représente l'évènement qui a été déclenché
 
 		$('#mon-id span').on('click', function(event) {
+			$(event.target).remove();
 			//Votre code ici, utiliser l'objet event (pas de this)
 			//Hint : http://api.jquery.com/category/events/event-object/ et http://api.jquery.com/event.target/
 		});
