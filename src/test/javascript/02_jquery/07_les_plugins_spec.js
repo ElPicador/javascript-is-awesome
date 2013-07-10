@@ -17,7 +17,10 @@ describe('Organiser son code jQuery', function() {
 
 	it("mon premier plugin", function() {
 		//Faites passer le test
-		/**/
+		$.fn.monPremierPlugin = function() {
+			return 'je suis un as du javascript';
+		}
+
 		expect($('div').monPremierPlugin()).toBe('je suis un as du javascript');
 	});
 
@@ -25,31 +28,44 @@ describe('Organiser son code jQuery', function() {
 		//this dans un plugin jQuery représente l'objet $()
 		setFixtures('<div id="mon-id"></div>');
 
-		//Coder ici
+		$.fn.rendreVert = function() {
+			this.css("color", "green");
+		}
 
 		$('#mon-id').rendreVert();
-		expect($('#mon-id')).toHaveCss({color: "green"});
+		expect($('#mon-id')).toHaveCss({color: "rgb(0, 128, 0)"});
 	});
 
 	it("chainer des fonctions", function() {
 		//jQuery permet de chainer des appels de fonctions : $('div').find('span').rendreVert();
 		setFixtures('<div id="mon-id"></div>');
 
-		//Coder ici
+		$.fn.rendreVert = function() {
+			this.css("color", "green");
+			return this;
+		}
 
 		$('#mon-id').rendreVert().addClass('superGreen');
-		expect($('#mon-id')).toHaveCss({color: "green"});
+		expect($('#mon-id')).toHaveCss({color: "rgb(0, 128, 0)"});
 		expect($('#mon-id')).toHaveClass('superGreen');
 	});
 
 	it("un peu de scope", function() {
-		var $ = {};
+		var emptyObject = {};
+		var $ = emptyObject;
 
-		//Recoder votre plugin en protégeant $ et en utilisant une variable privée nommé couleur
+		(function($) {
+			$.fn.rendreVert = function(couleur) {
+				this.couleur = couleur;
+				this.css("color", couleur);
+				return this;
+			}
+		})(jQuery);
 
-		expect(typeof jQuery.fn.rendreVert).toBe(Function);
+		jQuery('div').rendreVert('green');
+		expect(typeof jQuery.fn.rendreVert).toBe('function');
 		expect(jQuery.fn.rendreVert.couleur).toBe(undefined);
-		expect($).toBe({});
+		expect($).toBe(emptyObject);
 	});
 
 	it("de la lecture", function() {
