@@ -1,8 +1,8 @@
 
 describe("les prototypes", function() {
 	// Javascript est un langage de programmation orientée prototype.
-	// C'est une forme de programmation orientée objet sans classe, basée sur la notion de prototype. 
-	// Un prototype est un objet à partir duquel on crée de nouveaux objets. 
+	// C'est une forme de programmation orientée objet sans classe, basée sur la notion de prototype.
+	// Un prototype est un objet à partir duquel on crée de nouveaux objets.
 	// Toute fonction Javascript comporte une propriété nommée _prototype_ (sans les _)
 
 	// N'hésiter pas à lire la page wikipedia sur le sujet : http://fr.wikipedia.org/wiki/Programmation_orient%C3%A9e_prototype
@@ -13,21 +13,21 @@ describe("les prototypes", function() {
 		//Completer le code ici pour faire passer les tests
 
 		var ninjaA = Ninja();
-		expect(ninjaA.swingSword()).toBe( /**/ );
+		expect(ninjaA).toBe( /**/ );
 
 		var ninjaB = new Ninja()
 		expect(ninjaB.swingSword()).toBeTruthy();
 	});
 
-	// En JS, tout objet a une propriété nommée _constructor_ 
+	// En JS, tout objet a une propriété nommée _constructor_
 	// qui représente la fonction qui a été utilisée pour le créer
 
 	it("les constructeurs", function() {
-		function Ninja(){} 
-		 
-		var ninja = new Ninja(); 
+		function Ninja(){}
 
-		//Faire passer les tests		
+		var ninja = new Ninja();
+
+		//Faire passer les tests
 		expect(typeof ninja).toBe( /**/ );
 		expect(ninja instanceof Ninja).toBe( /**/ );
 		expect(ninja.constructor).toBe( /**/ );
@@ -40,6 +40,7 @@ describe("les prototypes", function() {
 
 		//Faire passer les tests
 		expect(typeof ninja).toBe( /**/ );
+		expect(typeof ninja.constructor).toBe( /**/ );
 		expect(typeof ninjaB).toBe( /**/ );
 	});
 
@@ -53,7 +54,7 @@ describe("les prototypes", function() {
 
 		var ninja = new Ninja();
 
-		//Faire passer les tests		
+		//Faire passer les tests
 		expect(ninja instanceof Ninja).toBe( /**/ );
 		expect(ninja instanceof Person).toBe( /**/ );
 		expect(ninja instanceof Object).toBe( /**/ );
