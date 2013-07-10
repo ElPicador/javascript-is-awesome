@@ -1,7 +1,7 @@
 describe("À lire avant", function() {
 	it("Aller dans le fichier src/test/langage/01_les_bases_spec.js", function() {
 		//Vous pouvez supprimer ce test
-		expect(false).toBeTruthy();
+		expect(true).toBeTruthy();
 	});
 });
 
@@ -38,22 +38,23 @@ describe("Ceci est un bloc de plusieurs tests", function() {
 	});
 });
 
-
 describe("les bases", function() {
 	it("des objets en javascript", function() {
 		// {} représente un objet
 		// { a: 1 } représente un objet ayant la propriété "a" qui vaut 1
 
-		//Ecrire ce qu'il faut pour faire passer les tests
+		var ninja = {
+			yell: function() { return "yahhhh" }
+		}
+
 		expect(ninja instanceof Object).toBeTruthy();
 		expect(ninja.yell()).toBe("yahhhh");
 	});
 
 	it('3 façons de définir une fonction', function() {
-		//Ecrire de 3 façons une fonction :
-		//Une "classique"
-		//Une nommée
-		//Une en propriété
+		function fonction1() {}
+		var fonction2 = function() {}
+		window.fonction3 = function() {}
 
 		expect(fonction1 instanceof Function).toBeTruthy();
 		expect(fonction2 instanceof Function).toBeTruthy();
@@ -62,7 +63,7 @@ describe("les bases", function() {
 
 	it("Javascript est fonctionnel", function() {
 		function maFonction() {
-			//Completer le code ici
+			return function() { return true; }
 		}
 
 		expect(typeof maFonction()).toBe("function");
@@ -77,18 +78,24 @@ describe("les bases", function() {
 			var a = 2;
 			b = 2;
 
-			//Ecrire deux tests sur les valeurs de a et b
+			expect(a).toBe(2);
+			expect(b).toBe(2);
 		}
 
-		//Ecrire deux tests sur les valeurs de a et b
+		expect(a).toBe(1);
+		expect(b).toBe(1);
+
 		maFonction();
-		//Ecrire deux tests sur les valeurs de a et b
+
+		expect(a).toBe(1);
+		expect(b).toBe(2);
 
 		//Noter l'effet de l'utilisation de _var_
 	});
 
 	it("tout est objet (ou pas)", function() {
-		//Ecrire ce qui fait passer les tests
+		function fonction() {}
+		var objet = {}
 
 		expect(fonction instanceof Object).toBeTruthy();
 		expect(fonction instanceof Function).toBeTruthy();
@@ -98,7 +105,11 @@ describe("les bases", function() {
 	});
 
 	it("tout est objet (encore)", function() {
-		//Ecrire ce qui fait passer les tests
+		function fonction() {}
+		var objet = {}
+
+		fonction.maPropriete = 1;
+		objet.maPropriete = 1;
 
 		expect(fonction instanceof Object).toBeTruthy();
 		expect(fonction instanceof Function).toBeTruthy();
@@ -110,52 +121,50 @@ describe("les bases", function() {
 	});
 
 	it("== vs ===", function() {
-		//Pour l'égalité on a deux opérateurs == et ===
-		//Voyons les différences
-		expect('' == '0').toBe( /**/ );
-		expect('' === '0').toBe( /**/ );
+		expect('' == '0').toBeFalsy();
+		expect('' === '0').toBeFalsy();
 
-		expect(0 == '').toBe( /**/ );
-		expect(0 === '').toBe( /**/ );
+		expect(0 == '').toBeTruthy();
+		expect(0 === '').toBeFalsy();
 
-		expect(0 == '0').toBe( /**/ );
-		expect(0 === '0').toBe( /**/ );
+		expect(0 == '0').toBeTruthy();
+		expect(0 === '0').toBeFalsy();
 
-		expect(false == 'false').toBe( /**/ );
-		expect(false === 'false').toBe( /**/ );
+		expect(false == 'false').toBeFalsy();
+		expect(false === 'false').toBeFalsy();
 
-		expect(false == '0').toBe( /**/ );
-		expect(false === '0').toBe( /**/ );
+		expect(false == '0').toBeTruthy();
+		expect(false === '0').toBeFalsy();
 
-		expect(false == undefined).toBe( /**/ );
-		expect(false === undefined).toBe( /**/ );
+		expect(false == undefined).toBeFalsy();
+		expect(false === undefined).toBeFalsy();
 
-		expect(false == null).toBe( /**/ );
-		expect(false === null).toBe( /**/ );
+		expect(false == null).toBeFalsy();
+		expect(false === null).toBeFalsy();
 
-		expect(null == undefined).toBe( /**/ );
-		expect(null === undefined).toBe( /**/ );
+		expect(null == undefined).toBeTruthy();
+		expect(null === undefined).toBeFalsy();
 
-		expect(' \t\r\n ' == 0).toBe( /**/ );
-		expect(' \t\r\n ' === 0).toBe( /**/ );
+		expect(' \t\r\n ' == 0).toBeTruthy();
+		expect(' \t\r\n ' === 0).toBeFalsy();
 
 		var a = [1,2,3]
 		var b = [1,2,3]
-		expect(a == b).toBe( /**/ );
-		expect(a === b).toBe( /**/ );
+		expect(a == b).toBeFalsy();
+		expect(a === b).toBeFalsy();
 
 		var c = { x: 1, y: 2 };
 		var d = { x: 1, y: 2 };
-		expect(c == d).toBe( /**/ );
-		expect(c === d).toBe( /**/ );
+		expect(c == d).toBeFalsy();
+		expect(c === d).toBeFalsy();
 
 		var e = "text";
 		var f = "te" + "xt";
-		expect(e == f).toBe( /**/ );
-		expect(e === f).toBe( /**/ );
+		expect(e == f).toBeTruthy();
+		expect(e === f).toBeTruthy();
 
-		expect("abc" == new String("abc")).toBe( /**/ );
-		expect("abc" === new String("abc")).toBe( /**/ );
+		expect("abc" == new String("abc")).toBeTruthy();
+		expect("abc" === new String("abc")).toBeFalsy();
 
 		//Conclusion me JAMAIS utiliser ==
 	});
