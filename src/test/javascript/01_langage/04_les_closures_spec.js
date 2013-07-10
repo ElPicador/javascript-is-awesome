@@ -23,18 +23,20 @@ describe("les closures", function() {
 	});
 
 	it("les scopes avec des closures", function() {
-		(function(){
+		(function() {
 			var count = 0;
-
-			var timer = setInterval(function(){
+			var timer = function() {
 				if ( count < 5 ) {
 					count++;
+					timer();
 				} else {
 					expect(count).toBe( /**/ );
 					expect(typeof timer).toBe( /**/ );
-					clearInterval( timer );
+					return timer
 				}
-			}, 100);
+			}
+
+			return timer();
 		})();
 
 		expect(typeof count).toBe( /**/ );
@@ -48,7 +50,8 @@ describe("les closures", function() {
 			}
 		}
 
-		expect(A()()).toBe( /**/ );
+		expect(typeof A("toto")).toBe( /**/ );
+		expect(A("toto")()).toBe( /**/ );
 	});
 });
 
