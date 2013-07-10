@@ -59,7 +59,8 @@ describe("Avant de commencer avec AJAX", function() {
 	describe('À vous de jouer', function() {
 		it('simple mock', function() {
 			//Compléter ici
-			var espion = undefined;
+			var espion = jasmine.createSpy('espion');
+			espion('toto', 1);
 
 			expect(espion).toHaveBeenCalledWith(jasmine.any(String), 1);
 		});
@@ -71,9 +72,10 @@ describe("Avant de commencer avec AJAX", function() {
 				}
 			}
 
+			spyOn(objet, 'maFonction');
 			var result = objet.maFonction(1, '2');
-			expect(objet.maFonction).toHaveBeenCalledWith( /**/ );
-			expect(result).toBe( /**/ );
+			expect(objet.maFonction).toHaveBeenCalledWith(1, '2');
+			expect(result).toBe();
 		});
 
 	});
@@ -130,7 +132,13 @@ describe("ajax ? le pote d'Achille ?", function() {
 
 	it("une vraie requête ajax", function() {
 		//Coder un $.ajax qui répond au test
-		$.ajax( /**/ );
+		$.ajax({
+			url: '/nimp',
+			method: 'POST',
+			success: success,
+			complete: complete,
+			error: error
+		});
 
 		request = mostRecentAjaxRequest();
 		request.response({status: 200, responseText: "{}"});
