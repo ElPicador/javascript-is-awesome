@@ -6,11 +6,11 @@ describe("Manipuler le DOM", function() {
 		var dom = $( /**/ );
 
 		expect(dom).toBe('span');
-		expect(dom).toHaveClass('ma-classe');	
-		expect(dom).toHaveId('mon-id');	
+		expect(dom).toHaveClass('ma-classe');
+		expect(dom).toHaveId('mon-id');
 	});
 
-	it("Ajouter du DOM", function() {		
+	it("Ajouter du DOM", function() {
 		//La méthode append permet d'ajouter du DOM _après_ une balise
 		//Faites passer les tests
 		setFixtures(
@@ -25,7 +25,7 @@ describe("Manipuler le DOM", function() {
 		expect($('#mon-id span').last()).toHaveClass('autre-classe');
 	});
 
-	it("Supprimer du DOM", function() {		
+	it("Supprimer du DOM", function() {
 		//La méthode remove permet de supprimer du DOM
 		//Faites passer les tests
 		setFixtures(
@@ -63,7 +63,7 @@ describe("Manipuler le DOM", function() {
 		setFixtures('<div id="mon-id" data-toto="tata"></div>');
 
 		//Faites passer les tests
-		expect($('#mon-id')).toHaveAttr('data-mondata', 1);
+		expect($('#mon-id')).toHaveData('mondata', 1);
 		expect(/**/).toBe('tata');
 	});
 
