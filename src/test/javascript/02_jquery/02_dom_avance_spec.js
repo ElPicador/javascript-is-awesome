@@ -32,7 +32,7 @@ describe("Chercher dans le DOM", function() {
 	it("selecteur descendant", function() {
 		//Trouver tous les li contenu dans #langages
 		//Hint : utiliser un sélecteur double
-		var selecteur = $( /**/ );
+		var selecteur = $('#langages li');
 
 		expect(selecteur).toBe('li');
 		expect(selecteur.length).toBe(12);
@@ -42,7 +42,7 @@ describe("Chercher dans le DOM", function() {
 		//Le sélecteur précédent nous renvoyait aussi les li des ul.vote
 		//Trouvez un sélecteur qui ne récupère que les li directement sous #langages
 		//Ce sélecteur est nommé child selector et se note '>' (sans les '')
-		var selecteur = $( /**/ );
+		var selecteur = $('#langages > li');
 
 		expect(selecteur).toBe('li');
 		expect(selecteur.length).toBe(4);
@@ -55,7 +55,7 @@ describe("Chercher dans le DOM", function() {
 	it("selecteur multiple", function() {
 		//Trouver uniquement les li ruby et java
 		//On peut mettre plusieurs sélecteur en les séparants par une virgule (',')
-		var selecteur = $( /**/ );
+		var selecteur = $('li.ruby, li.java');
 
 		expect(selecteur).toBe('li');
 		expect(selecteur.length).toBe(2);
@@ -66,7 +66,7 @@ describe("Chercher dans le DOM", function() {
 	it("selecteur multiple v2", function() {
 		//Trouver le li java et le h1
 		//jQuery permet de trouver des balises différents au sein d'un même sélecteur
-		var selecteur = $( /**/ );
+		var selecteur = $('li.java, #langage-wrapper h1');
 
 		expect(selecteur).toBe('li');
 		expect(selecteur).toBe('h1');
@@ -104,9 +104,9 @@ describe("Traverser le DOM", function() {
 	})
 
 	it("la méthode find()", function() {
-		//Cette méthode permet d'appliquer un sélecteur jQuery/CSS à un élément jQuery 
-		var selecteur = $('#langages').find( /**/ );
-		
+		//Cette méthode permet d'appliquer un sélecteur jQuery/CSS à un élément jQuery
+		var selecteur = $('#langages').find('.javascript');
+
 		expect(selecteur).toBe('li');
 		expect(selecteur).toHaveLength(2);
 		expect(selecteur).toHaveClass('javascript');
@@ -116,8 +116,8 @@ describe("Traverser le DOM", function() {
 	it("la méthode first()", function() {
 		//Cette méthode permet de prendre le premier enfant d'un élément jQuery
 		//Sélectionner le premier li de #langages
-		var selecteur = undefined /**/ ;
-		
+		var selecteur = $('#langages li').first();
+
 		expect(selecteur).toBe('li');
 		expect(selecteur).toHaveLength(1);
 		expect(selecteur).toHaveClass('java');
@@ -126,12 +126,12 @@ describe("Traverser le DOM", function() {
 	it("la méthode parent()", function() {
 		//Cette méthode permet de "remonter" d'un cran dans l'arbre DOM
 		//Sélectionner les li ayant une classe _super_ sur leur h2 en utilisant la méthode parent
-		var selecteur = undefined /**/ ;
-		
+		var selecteur = $('h2.super').parent() ;
+
 		expect(selecteur).toBe('li');
 		expect(selecteur).toHaveLength(1);
 		expect(selecteur).toHaveClass('javascript');
-		expect(selecteur.child('h2')).toHaveClass('super');
+		expect(selecteur.find('h2')).toHaveClass('super');
 	});
 
 	it("d'autres fonctions", function() {
