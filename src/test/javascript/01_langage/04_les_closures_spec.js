@@ -7,7 +7,7 @@ describe("les closures", function() {
 			return num + myNum;
 		}
 
-		expect(addNum(5)).toBe( /**/ );
+		expect(addNum(5)).toBe(15);
 	})
 
 	it("toutes simples ou pas", function() {
@@ -19,26 +19,28 @@ describe("les closures", function() {
 
 		num = 15;
 
-		expect(addNum(5)).toBe( /**/ );
+		expect(addNum(5)).toBe(20);
 	});
 
 	it("les scopes avec des closures", function() {
-		(function(){
+		(function() {
 			var count = 0;
-
-			var timer = setInterval(function(){
+			var timer = function() {
 				if ( count < 5 ) {
 					count++;
+					timer();
 				} else {
-					expect(count).toBe( /**/ );
-					expect(typeof timer).toBe( /**/ );
-					clearInterval( timer );
+					expect(count).toBe(5);
+					expect(typeof timer).toBe('function');
+					return timer
 				}
-			}, 100);
+			}
+
+			return timer();
 		})();
 
-		expect(typeof count).toBe( /**/ );
-		expect(typeof timer).toBe( /**/ );
+		expect(typeof count).toBe('undefined');
+		expect(typeof timer).toBe('undefined');
 	});
 
 	it("Double closure", function() {
@@ -48,7 +50,8 @@ describe("les closures", function() {
 			}
 		}
 
-		expect(A()()).toBe( /**/ );
+		expect(typeof A("toto")).toBe('function');
+		expect(A("toto")()).toBe("toto");
 	});
 });
 
