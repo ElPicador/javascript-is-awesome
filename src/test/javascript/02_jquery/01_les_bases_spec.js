@@ -118,20 +118,20 @@ describe("DOM", function() {
 
 describe("Changement de DOM", function() {
 	it("Récupérer du texte", function() {
-		setFixtures('<span>Mon texte</span>');
+		setFixtures('<span id="mon-span">Mon texte</span>');
 
 		//Pour récupérer le contenu sous format texte d'une balise c'est .text()
 		expect( /**/ ).toBe('Mon texte');
 	});
 
 	it("Changer le texte", function() {
-		setFixtures('<span>Mon texte</span>');
+		setFixtures('<span id="mon-span">Mon texte</span>');
 
 		//De manière générale, en jQuery, une méthode qui permet de récupérer une valeur
 		//permet de la changer en lui passant un paramètre.
 
 		//Changer le texte du span en "Mon super texte"
 
-		expect($('span').text()).toBe("Mon super texte");
+		expect($('#mon-span').text()).toBe("Mon super texte");
 	});
 });
