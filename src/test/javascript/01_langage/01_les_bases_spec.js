@@ -77,12 +77,17 @@ describe("les bases", function() {
 			var a = 2;
 			b = 2;
 
-			//Ecrire deux tests sur les valeurs de a et b
+			expect(a).toBe( /**/ );
+			expect(b).toBe( /**/ );
 		}
 
-		//Ecrire deux tests sur les valeurs de a et b
+		expect(a).toBe( /**/ );
+		expect(b).toBe( /**/ );
+
 		maFonction();
-		//Ecrire deux tests sur les valeurs de a et b
+
+		expect(a).toBe( /**/ );
+		expect(b).toBe( /**/ );
 
 		//Noter l'effet de l'utilisation de _var_
 	});
