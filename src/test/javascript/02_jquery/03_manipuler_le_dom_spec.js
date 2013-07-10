@@ -3,14 +3,14 @@ describe("Manipuler le DOM", function() {
 	it("Text to DOM", function() {
 		//La méthode $ (ou jQuery) permet de transformer du texte en DOM
 		//Faites passer les tests
-		var dom = $( /**/ );
+		var dom = $('<span class="ma-classe" id="mon-id"></span>');
 
 		expect(dom).toBe('span');
-		expect(dom).toHaveClass('ma-classe');	
-		expect(dom).toHaveId('mon-id');	
+		expect(dom).toHaveClass('ma-classe');
+		expect(dom).toHaveId('mon-id');
 	});
 
-	it("Ajouter du DOM", function() {		
+	it("Ajouter du DOM", function() {
 		//La méthode append permet d'ajouter du DOM _après_ une balise
 		//Faites passer les tests
 		setFixtures(
@@ -18,14 +18,14 @@ describe("Manipuler le DOM", function() {
 				<span class="ma-classe"></span> \
 			</div>');
 
-		/**/
+		$('span.ma-classe').append('<span class="autre-classe"></span>');
 
 		expect($('#mon-id span')).toHaveLength(2);
 		expect($('#mon-id span')).toBe('span');
 		expect($('#mon-id span').last()).toHaveClass('autre-classe');
 	});
 
-	it("Supprimer du DOM", function() {		
+	it("Supprimer du DOM", function() {
 		//La méthode remove permet de supprimer du DOM
 		//Faites passer les tests
 		setFixtures(
@@ -34,7 +34,7 @@ describe("Manipuler le DOM", function() {
 				<span class="mon-autre-classe"></span> \
 			</div>');
 
-		/**/
+		$('.mon-autre-classe').remove();
 
 		expect($('#mon-id span')).toHaveLength(1);
 		expect($('#mon-id span')).toHaveClass('ma-classe');
@@ -44,7 +44,7 @@ describe("Manipuler le DOM", function() {
 		setFixtures('<span id="mon-id" class="ma-classe"></span>');
 
 		function toggleClass() {
-			//Votre code ici
+			$('#mon-id').toggleClass('ma-classe');
 		}
 
 		expect($('#mon-id')).toHaveAttr('class', 'ma-classe');
@@ -63,8 +63,10 @@ describe("Manipuler le DOM", function() {
 		setFixtures('<div id="mon-id" data-toto="tata"></div>');
 
 		//Faites passer les tests
-		expect($('#mon-id')).toHaveAttr('data-mondata', 1);
-		expect(/**/).toBe('tata');
+		$('#mon-id').data('mondata', 1);
+
+		expect($('#mon-id')).toHaveData('mondata', 1);
+		expect($('#mon-id').data('toto')).toBe('tata');
 	});
 
 	it("d'autres fonctions", function() {
