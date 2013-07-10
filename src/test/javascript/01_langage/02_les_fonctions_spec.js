@@ -2,10 +2,11 @@
 describe("les fonctions", function() {
 	it("Quel est le nom de ma fonction ?", function() {
 		var ninja = function myNinja() {
-			//ecrire un test qui compare ninja et myNinja
+			expect(ninja === myNinja).toBeTruthy();
 		}
 
-		//ecrire un test sur la valeur de ninja et myNinja
+		expect(typeof ninja).toBe('function');
+		expect(typeof myNinja).toBe('undefined');
 	});
 
 });
