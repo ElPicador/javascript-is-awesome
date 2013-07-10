@@ -1,5 +1,7 @@
 describe("Pour aller plus loin", function() {
 	//http://learn.jquery.com/performance/detach-elements-before-work-with-them/
+	//http://underscorejs.org/
+	//http://requirejs.org/
 
 	xit("event.preventDefault()", function() {
 		//http://api.jquery.com/event.preventDefault/
