@@ -28,7 +28,8 @@ describe('Organiser son code jQuery', function() {
 		//Coder ici
 
 		$('#mon-id').rendreVert();
-		expect($('#mon-id')).toHaveCss({color: "green"});
+		//rgb(0, 128, 0) c'est vert
+		expect($('#mon-id')).toHaveCss({color: "rgb(0, 128, 0)"});
 	});
 
 	it("chainer des fonctions", function() {
@@ -38,18 +39,20 @@ describe('Organiser son code jQuery', function() {
 		//Coder ici
 
 		$('#mon-id').rendreVert().addClass('superGreen');
-		expect($('#mon-id')).toHaveCss({color: "green"});
+		expect($('#mon-id')).toHaveCss({color: "rgb(0, 128, 0)"});
 		expect($('#mon-id')).toHaveClass('superGreen');
 	});
 
 	it("un peu de scope", function() {
-		var $ = {};
+		var emptyObject = {};
+		var $ = emptyObject;
 
 		//Recoder votre plugin en protégeant $ et en utilisant une variable privée nommé couleur
 
-		expect(typeof jQuery.fn.rendreVert).toBe(Function);
+		jQuery('div').rendreVert('green');
+		expect(typeof jQuery.fn.rendreVert).toBe('function');
 		expect(jQuery.fn.rendreVert.couleur).toBe(undefined);
-		expect($).toBe({});
+		expect($).toBe(emptyObject);
 	});
 
 	it("de la lecture", function() {
