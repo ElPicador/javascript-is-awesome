@@ -104,9 +104,9 @@ describe("Traverser le DOM", function() {
 	})
 
 	it("la méthode find()", function() {
-		//Cette méthode permet d'appliquer un sélecteur jQuery/CSS à un élément jQuery 
+		//Cette méthode permet d'appliquer un sélecteur jQuery/CSS à un élément jQuery
 		var selecteur = $('#langages').find( /**/ );
-		
+
 		expect(selecteur).toBe('li');
 		expect(selecteur).toHaveLength(2);
 		expect(selecteur).toHaveClass('javascript');
@@ -117,7 +117,7 @@ describe("Traverser le DOM", function() {
 		//Cette méthode permet de prendre le premier enfant d'un élément jQuery
 		//Sélectionner le premier li de #langages
 		var selecteur = undefined /**/ ;
-		
+
 		expect(selecteur).toBe('li');
 		expect(selecteur).toHaveLength(1);
 		expect(selecteur).toHaveClass('java');
@@ -127,11 +127,11 @@ describe("Traverser le DOM", function() {
 		//Cette méthode permet de "remonter" d'un cran dans l'arbre DOM
 		//Sélectionner les li ayant une classe _super_ sur leur h2 en utilisant la méthode parent
 		var selecteur = undefined /**/ ;
-		
+
 		expect(selecteur).toBe('li');
 		expect(selecteur).toHaveLength(1);
 		expect(selecteur).toHaveClass('javascript');
-		expect(selecteur.child('h2')).toHaveClass('super');
+		expect(selecteur.find('h2')).toHaveClass('super');
 	});
 
 	it("d'autres fonctions", function() {
