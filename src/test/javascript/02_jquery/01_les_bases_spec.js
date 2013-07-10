@@ -33,14 +33,14 @@ describe("$ vs $()", function() {
 		//$ est une fonction (et donc un objet)
 		//$() est l'appel à la méthode $
 
-		expect(typeof $).toBe( /**/ );
-		expect(typeof $()).toBe( /**/ );
+		expect(typeof $).toBe('function');
+		expect(typeof $()).toBe('object');
 	});
 
 	it("$ est plus qu'une fonction", function() {
 		//$ (ou jQuery) est un objet qui comporte plusieurs méthodes utilitaires
 		var a = " les     espaces c'est super bien            ";
-		expect($.trim(a)).toBe( /**/ );
+		expect($.trim(a)).toBe("les     espaces c'est super bien");
 
 		//$.each() permet d'itérer sur une collection
 		$.each([0, 1, 2], function(i, value) {
@@ -48,7 +48,7 @@ describe("$ vs $()", function() {
 		});
 
 		//Ça fonctionne aussi sur les objets
-		$.each({foo: "foo", bar:"bar"}, function(key, value) {
+		$.each({foo: "foo", bar: "bar"}, function(key, value) {
 			expect(key).toBe(value);
 		});
 
@@ -70,28 +70,28 @@ describe("DOM", function() {
 		setFixtures('<div id="div-id"></div>');
 
 		//Le selecteur pour un id est # suivi de son id : #mon-id
-		expect( /**/ ).toExist();
+		expect($('#div-id')).toExist();
 	});
 
 	it("trouver un élément par son nom", function() {
 		setFixtures('<h1>Mon gros texte</h1>');
 
 		//Le selecteur pour un élément est son nom : div
-		expect( /**/ ).toExist();
+		expect($('h1')).toExist();
 	});
 
 	it("trouver un élément par sa classe", function() {
 		setFixtures('<span class="mon-span">Ceci est un span</span>');
 
 		//Le selecteur pour une classe est . suivi de sa classe : .ma-classe
-		expect( /**/ ).toExist();
+		expect($('.mon-span')).toExist();
 	});
 
 	it("trouver plusieurs élements", function() {
 		setFixtures('<div class="klass"></div><div class="klass"></div>');
 
 		//Les selecteurs jQuery peuvent rendre plusieurs élements
-		expect($('.klass').length).toBe( /**/ );
+		expect($('.klass').length).toBe(2);
 	});
 
 	it("combiner plusieurs sélecteurs", function() {
@@ -99,7 +99,7 @@ describe("DOM", function() {
 
 		//Les selecteurs jQuery peuvent être combinés
 		//Écrivez un sélecteur qui ne renvoi que le div avec la class klass2
-		var selecteur = $( /**/ );
+		var selecteur = $('div.klass2');
 		expect(selecteur).toHaveClass("klass");
 		expect(selecteur).toHaveClass("klass2");
 	});
@@ -118,20 +118,20 @@ describe("DOM", function() {
 
 describe("Changement de DOM", function() {
 	it("Récupérer du texte", function() {
-		setFixtures('<span>Mon texte</span>');
+		setFixtures('<span id="mon-span">Mon texte</span>');
 
 		//Pour récupérer le contenu sous format texte d'une balise c'est .text()
-		expect( /**/ ).toBe('Mon texte');
+		expect($('#mon-span').text()).toBe('Mon texte');
 	});
 
 	it("Changer le texte", function() {
-		setFixtures('<span>Mon texte</span>');
+		setFixtures('<span id="mon-span">Mon texte</span>');
 
 		//De manière générale, en jQuery, une méthode qui permet de récupérer une valeur
 		//permet de la changer en lui passant un paramètre.
 
-		//Changer le texte du span en "Mon super texte"
+		$('#mon-span').text("Mon super texte")
 
-		expect($('span').text()).toBe("Mon super texte");
+		expect($('#mon-span').text()).toBe("Mon super texte");
 	});
 });
