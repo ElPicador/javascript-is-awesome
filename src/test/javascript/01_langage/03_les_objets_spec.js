@@ -7,21 +7,21 @@ describe("Les objets", function() {
 			this.name = "Ninja";
 		}
 
-		//Faitre passer les tests
+		//Faire passer les tests
 		var ninjaA = Ninja();
-		expect(ninja).toBe( /**/ );
+		expect(ninjaA).toBe( /**/ );
 
 		var ninjaB = new Ninja();
-		expect(ninja.name).toBe( /**/ );
+		expect(ninjaB.name).toBe( /**/ );
 	});
 
 	it("sans new", function() {
-		function User(first, last){ 
-			this.name = first + " " + last; 
-		} 
-		
-		window.name = "Resig"; 
-		var user = User("John", name); 
+		function User(first, last){
+			this.name = first + " " + last;
+		}
+
+		window.name = "Resig";
+		var user = User("John", name);
 
 		//Faire passer les tests
 		expect(typeof user).toBe( /**/ );
@@ -30,19 +30,19 @@ describe("Les objets", function() {
 
 	it("comme une fonction", function() {
 		//Faire passer les tests en complétant le code de la fonction Ninja
-		// /!\ Ne pas oublier pas la propriété swung /!\
-		function Ninja(){ 
+		// /!\ Ne pas oublier la propriété swung /!\
+		function Ninja(){
 			/**/
 			this.swingSword = function() {
-				/**/ 				
-			}; 
-		} 
-		
-		var ninja = new Ninja(); 
+				/**/
+			};
+		}
+
+		var ninja = new Ninja();
 		expect(ninja.swingSword()).toBeTruthy();
 		expect(ninja.swung).toBeTruthy();
-		 
-		var ninjaB = new Ninja(); 
+
+		var ninjaB = new Ninja();
 		expect(ninjaB.swung).toBeFalsy();
 	});
 
